@@ -1,4 +1,4 @@
-with open('day1_input.txt', 'r') as f:
+with open('day1part1_input.txt', 'r') as f:
     instructions = [line.strip() for line in f]
 
 dial_value = 50
