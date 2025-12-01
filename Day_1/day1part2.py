@@ -9,13 +9,18 @@ for instruction in instructions:
     number = int(instruction[1:])
     
     if operation == 'R':
+        old_value = dial_value
         new_value = dial_value + number
-        zero_count += new_value // 100
         dial_value = new_value % 100
+        
+        # Count multiples of 100 in range (old_value, new_value]
+        zero_count += new_value // 100 - old_value // 100
             
     elif operation == 'L':
-        new_value = dial_value - number
-        zero_count += -(new_value // 100)
+        old_value = dial_value
+        new_value = dial_value - number  
         dial_value = new_value % 100
+        
+        zero_count += (old_value - 1) // 100 - (new_value - 1) // 100
 
 print("Total times dial hit + crossed zero:", zero_count)
